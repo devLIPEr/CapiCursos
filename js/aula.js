@@ -81,7 +81,9 @@ function loadAula(aula){
             divQuestoes.innerHTML += '<div class="questao"><h3>'+element['questao']+'</h3><div><input type="radio" id="'+element['questao']+'1" name="q'+i+'"><label for="'+element['questao']+'1">'+element['respostas'][0]+'</label></div><div><input type="radio" id="'+element['questao']+'2" name="q'+i+'"><label for="'+element['questao']+'2">'+element['respostas'][1]+'</label></div><div><input type="radio" id="'+element['questao']+'3" name="q'+i+'"><label for="'+element['questao']+'3">'+element['respostas'][2]+'</label></div><div><input type="radio" id="'+element['questao']+'4" name="q'+i+'"><label for="'+element['questao']+'4">'+element['respostas'][3]+'</label></div></div>';
             i += 1;
         });
-        divQuestoes.innerHTML += '<button onclick="verify('+aula+", '"+window.location.href.split("?c=")[1]+"'"+')">Verificar</button>';
+        if(aulaInfo[1].length > 0){
+            divQuestoes.innerHTML += '<button onclick="verify('+aula+", '"+window.location.href.split("?c=")[1]+"'"+')">Verificar</button>';
+        }
 
         var iframe = document.querySelector('iframe');
         iframe.src = aulaInfo[2];
