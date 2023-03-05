@@ -85,7 +85,7 @@ var cursos = {
     }
 }
 
-var url = window.location.href.split('/')[0];
+var url = "https://devliper.github.io/CapiCursos/";
 
 function printCursos(){
     for(const [key, value] of Object.entries(cursos)){
