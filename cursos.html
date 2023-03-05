@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus cursos</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html{
+            height: 100%;
+        }
+
+        body{
+            background-color: #D8DFD5;
+            height: 100%;
+        }
+
+		header{
+			background-color: #7BFF51;
+			/* background-image: linear-gradient(#7BFF51 55%, #D8DFD5); */
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			height: 6%;
+		}
+
+		.header{
+			padding: 15px;
+		}
+
+		.header li{
+			display: inline;
+			margin: 5px 10px 5px 0;
+		}
+
+		.header a{
+			text-decoration: none;
+			font-size: 20px;
+			color: black;
+			cursor: pointer;
+		}
+
+        #profile{
+            display: inline-flex;
+            align-items: center;
+        }
+        #profile img{
+            margin: 0 0 0 10px;
+            border-radius: 50%;
+            display: inline;
+            width: 24px;
+        }
+        
+        main{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding-top: 15px;
+        }
+
+        .card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 23%;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .card img{
+            width: 100%;
+        }
+        .card p{
+			background-color: #7BFF51;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="loadConta()">
+	<header>
+		<ul class="header">
+			<li><a href="/">Home</a></li>
+			<li>/</li>
+			<li><a>Suporte</a></li>
+			<li>/</li>
+			<li><a href="carrinho.html">Carrinho</a></li>
+			<li>/</li>
+			<li><a href="catalogo.html">Catálogo</a></li>
+			<li id="loginn">/</li>
+			<li><a onclick="loadLogInForm()" id="login">Log In</a></li>
+			<li id="siginn">/</li>
+			<li><a onclick="loadSignInForm()" id="sigin">Sign Up</a></li>
+			<li id="profilee" style="display: none;">/</li>
+			<li id="profile" style="display: none;"><a href="cursos.html">User</a> <img width="24px" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="User profile"></li>
+		</ul>
+	</header>
+    <main>
+    </main>
+	<div id="signinform">
+		<input type="text" placeholder="Nome...">
+		<input type="email" placeholder="Email...">
+		<input type="password" placeholder="Senha...">
+		<div class="buttons">
+			<button onclick="document.cookie = 'logged=true'; loadSignInForm(); showHideLog();">Sign Up</button>
+		</div>
+	</div>
+	<div id="loginform">
+		<input type="email" placeholder="Email...">
+		<input type="password" placeholder="Senha...">
+		<div class="buttons">
+			<button onclick="document.cookie = 'logged=true'; loadLogInForm(); showHideLog();">Log In</button>
+		</div>
+	</div>
+	<script src="js/forms.js"></script>
+	<script src="js/router.js"></script>
+	<script src="js/shop.js"></script>
+	<script src="js/aula.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso - Curso Foda</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html{
+            height: 100%;
+        }
+
+        body{
+            background-color: #D8DFD5;
+            height: 100%;
+        }
+
+		header{
+			background-color: #7BFF51;
+			/* background-image: linear-gradient(#7BFF51 55%, #D8DFD5); */
+			display: flex;
+			justify-content: flex-end;
+            align-items: center;
+            height: 6%;
+		}
+
+		.header{
+			padding: 15px;
+		}
+
+		.header li{
+			display: inline;
+			margin: 5px 10px 5px 0;
+		}
+
+		.header a{
+			text-decoration: none;
+			font-size: 20px;
+			color: black;
+			cursor: pointer;
+		}
+
+        main{
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+        }
+
+        .curso{
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .cursoInfo{
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            align-items: center;
+            width: 30%;
+        }
+        .curso iframe{
+            width: 720px;
+            height: 404px;
+        }
+        .cursoInfo img{
+            width: 55%;
+        }
+        .cursoInfo div{
+            display: flex;
+            padding: 5px;
+        }
+        .cursoInfo div h2{
+            margin-right: 20px;
+            text-overflow: ellipsis;
+        }
+        .cursoInfo div button{
+            outline: 0;
+            border: 0;
+            font-size: 16px;
+            font-weight: bolder;
+            background-color: rgba(123,255,81,.9);
+            border-radius: 10px;
+            padding: 3px 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .cursoInfo div button img{
+            width: 24px;
+            margin-left: 5px;
+        }
+        .cursoDesc{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-self: center;
+            width: 85%;
+        }
+        .cursoDesc p{
+            margin-top: 15px;
+            text-indent: 50px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        #signinform, #loginform{
+			background-color: rgba(123,255,81,.8);
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			display: none;
+			flex-direction: column;
+			padding: 15px;
+			width: 30%;
+			height: 30%;
+			justify-content: center;
+		}
+		#loginform{
+			height: 25%;
+		}
+		#signinform > input, #loginform > input{
+			padding: 3px 5px;
+			outline: 0;
+			border: 1px solid black;
+			border-radius: 10px;
+			margin-bottom: 15px;
+			font-size: 14px;
+			height: 30px;
+		}
+		.buttons{
+			display: flex;
+			justify-content: space-around;
+		}
+		.buttons > button{
+			outline: 0;
+			padding: 3px;
+			font-size: 16px;
+			color: black;
+			border: 1px #3c9e1e solid;
+			border-radius: 10px;
+			width: 60%;
+		}
+
+        #profile{
+            display: inline-flex;
+            align-items: center;
+        }
+        #profile img{
+            margin: 0 0 0 10px;
+            border-radius: 50%;
+            display: inline;
+            width: 24px;
+        }
+
+        @media (max-width: 1200px){
+            .cursoInfo img{
+                width: 80%;
+            }
+            .curso iframe{
+                width: 40%;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 965px){
+            #signinform, #loginform{
+                width: 40%;
+            }
+        }
+    </style>
+</head>
+<body onload="getInfo()">
+	<header>
+        <ul class="header">
+			<li><a href="/">Home</a></li>
+			<li>/</li>
+			<li><a>Suporte</a></li>
+			<li>/</li>
+            <li><a href="carrinho.html">Carrinho</a></li>
+            <li>/</li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+			<li id="loginn">/</li>
+			<li><a onclick="loadLogInForm()" id="login">Log In</a></li>
+			<li id="siginn">/</li>
+			<li><a onclick="loadSignInForm()" id="sigin">Sign Up</a></li>
+			<li id="profilee" style="display: none;">/</li>
+			<li id="profile" style="display: none;"><a href="cursos.html">User</a> <img width="24px" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="User profile"></li>
+		</ul>
+	</header>
+    <main>
+        <div class="curso">
+            <iframe id="link" src="INSERT_VIDEO_LINK"></iframe>
+            <div class="cursoInfo">
+                <img id="poster" src="INSERT_POSTER_HERE" alt="Capa do INSERT_NAME_HERE">
+                <div>
+                    <h2 id="name">INSERT_NAME_HERE</h2>
+                    <button id="price" onclick="addToCart()">R$ INSERT_PRICE_HERE<img src="https://cdn-icons-png.flaticon.com/512/4175/4175270.png" alt="Cart icon"></button>
+                </div>
+            </div>
+        </div>
+        <div id="desc" class="cursoDesc">
+            
+        </div>
+    </main>
+	<div id="signinform">
+		<input type="text" placeholder="Nome...">
+		<input type="email" placeholder="Email...">
+		<input type="password" placeholder="Senha...">
+		<div class="buttons">
+			<button onclick="document.cookie = 'logged=true'; loadSignInForm(); showHideLog();">Sign Up</button>
+		</div>
+	</div>
+	<div id="loginform">
+		<input type="email" placeholder="Email...">
+		<input type="password" placeholder="Senha...">
+		<div class="buttons">
+			<button onclick="document.cookie = 'logged=true'; loadLogInForm(); showHideLog();">Log In</button>
+		</div>
+	</div>
+	<script src="js/forms.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>

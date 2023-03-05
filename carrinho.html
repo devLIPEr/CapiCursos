@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html{
+            height: 100%;
+        }
+
+        body{
+            background-color: #D8DFD5;
+            height: 100%;
+        }
+
+		header{
+			background-color: #7BFF51;
+			/* background-image: linear-gradient(#7BFF51 55%, #D8DFD5); */
+			display: flex;
+			justify-content: flex-end;
+            align-items: center;
+            height: 6%;
+		}
+
+		.header{
+			padding: 15px;
+		}
+
+		.header li{
+			display: inline;
+			margin: 5px 10px 5px 0;
+		}
+
+		.header a{
+			text-decoration: none;
+			font-size: 20px;
+			color: black;
+			cursor: pointer;
+		}
+
+        #signinform, #loginform, #paymentform{
+            background-color: rgba(123,255,81,.8);
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            flex-direction: column;
+            padding: 15px;
+            width: 30%;
+            height: 30%;
+            justify-content: center;
+        }
+        #loginform{
+            height: 25%;
+        }
+        #signinform > input, #loginform > input{
+            padding: 3px 5px;
+            outline: 0;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            height: 30px;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-around;
+        }
+        .buttons > button{
+            outline: 0;
+            padding: 3px;
+            font-size: 16px;
+            color: black;
+            border: 1px #3c9e1e solid;
+            border-radius: 10px;
+            width: 60%;
+        }
+
+        #paymentform{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            background-color: rgba(123,255,81,.5);
+            flex-wrap: wrap;
+            height: 25%;
+        }
+        #paymentform img{
+            width: 65px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        main{
+            display: flex;
+            padding: 5px;
+        }
+
+        #cursos{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 75%;
+        }
+        .curso{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .curso img{
+            width: 128px;
+            margin-right: 15px;
+        }
+        .info{
+            display: flex;
+            align-items: center;
+        }
+        .info > div{
+            display: flex;
+            flex-direction: column;
+        }
+        .inputs{
+            width: 30%;
+            display: flex;
+            justify-content: end;
+        }
+        .inputs > input{
+			padding: 3px 5px;
+			outline: 0;
+			border: 0;
+			border-radius: 10px 0 0 10px;
+			font-size: 14px;
+			height: 30px;
+            width: 30%;
+        }
+        .inputs > button{
+			padding: 3px 10px;
+			outline: 0;
+			border: 0;
+			border-radius: 0 10px 10px 0;
+			font-size: 14px;
+			height: 30px;
+            cursor: pointer;
+        }
+
+        .payment{
+            display: flex;
+            flex-direction: column;
+            width: 25%;
+            align-items: center;
+            height: 300px;
+        }
+        .payment > div{
+            height: 10%;
+            width: 100%;
+            display: flex;
+			background-color: #7BFF51;
+            align-items: center;
+            justify-content: center;
+        }
+        .payment > div > p{
+            margin-left: 10px;
+        }
+        .payment > button{
+            background-color: rgba(123,255,81,.9);
+            outline: 0;
+            width: 40%;
+            height: 40px;
+            font-size: 16px;
+            font-weight: bolder;
+            border: 0;
+            border-radius: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        #profile{
+            display: inline-flex;
+            align-items: center;
+        }
+        #profile img{
+            margin: 0 0 0 10px;
+            border-radius: 50%;
+            display: inline;
+            width: 24px;
+        }
+
+        @media (max-width: 965px){
+            #signinform, #loginform{
+                width: 40%;
+            }
+        }
+    </style>
+</head>
+<body onload="loadCart()">
+	<header>
+		<ul class="header">
+			<li><a href="/">Home</a></li>
+			<li>/</li>
+			<li><a>Suporte</a></li>
+			<li>/</li>
+			<li><a href="catalogo.html">Catálogo</a></li>
+			<li id="loginn">/</li>
+			<li><a onclick="loadLogInForm()" id="login">Log In</a></li>
+			<li id="siginn">/</li>
+			<li><a onclick="loadSignInForm()" id="sigin">Sign Up</a></li>
+			<li id="profilee" style="display: none;">/</li>
+			<li id="profile" style="display: none;"><a href="cursos.html">User</a> <img width="24px" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="User profile"></li>
+		</ul>
+	</header>
+    <main>
+        <aside id="cursos">
+        </aside>
+        <aside class="payment">
+            <div>
+                <h4>Total:</h4>
+                <p id="totalPrice">R$ 0,00</p>
+            </div>
+            <button onclick="loadPaymentForm()">Pagar</button>
+        </aside>
+    </main>
+	<div id="signinform">
+		<input type="text" placeholder="Nome...">
+		<input type="email" placeholder="Email...">
+		<input type="password" placeholder="Senha...">
+		<div class="buttons">
+			<button onclick="document.cookie = 'logged=true'; loadSignInForm(); showHideLog();">Sign Up</button>
+		</div>
+	</div>
+	<div id="loginform">
+		<input type="email" placeholder="Email...">
+		<input type="password" placeholder="Senha...">
+		<div class="buttons">
+			<button onclick="document.cookie = 'logged=true'; loadLogInForm(); showHideLog();">Log In</button>
+		</div>
+	</div>
+	<div id="paymentform">
+		<img onclick="loadPaymentForm(1)" src="https://logosmarcas.net/wp-content/uploads/2020/05/Visa-Logo.png" alt="VISA">
+		<img onclick="loadPaymentForm(1)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="MasterCard">
+		<img onclick="loadPaymentForm(1)" src="https://dourasoft.com.br/site/dourasoft2017/wp-content/uploads/2016/02/atualizar-boleto-1.png" alt="Boleto bancário">
+		<img onclick="loadPaymentForm(1)" src="https://www.bcb.gov.br/content/estabilidadefinanceira/piximg/logo_pix.png" alt="PIX">
+		<img onclick="loadPaymentForm(1)" src="https://logodownload.org/wp-content/uploads/2019/09/google-pay-logo.png" alt="Google pay">
+		<img onclick="loadPaymentForm(1)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/2560px-Apple_Pay_logo.svg.png" alt="Apple pay">
+	</div>
+    <script src="js/router.js"></script>
+    <script>
+        var value = 0;
+        var values = {};
+        function calcPrice(id, curso){
+            if(cursos[curso]){
+                value = 0;
+                var qnt = document.querySelector("#number"+id).value;
+                var preco = (qnt * cursos[curso]['price'].replace(',','.'));
+                document.querySelector("input#number"+id).parentElement.parentElement.childNodes[0].childNodes[1].childNodes[1].innerHTML = "R$ " + (preco.toFixed(2)).toString().replace('.',',');
+                values[id] = preco;
+                for(const [key, val] of Object.entries(values)){
+                    value += val;
+                }
+                value = Math.round(value*100)/100;
+                document.querySelector("#totalPrice").innerHTML = "R$ " + (value.toFixed(2)).toString().replace('.',',');
+            }
+        }
+
+        function removeFromPage(id, curso){
+            addToConta(curso);
+            removeFromCart(curso);
+            document.querySelector("input#number"+id).parentElement.parentElement.remove();
+            delete values[id];
+            value = 0;
+            for(const [key, val] of Object.entries(values)){
+                value += val;
+            }
+            value = Math.round(value*100)/100;
+            document.querySelector("#totalPrice").innerHTML = "R$ " + (value.toFixed(2)).toString().replace('.',',');
+        }
+
+        
+        document.querySelector("#paymentform").style.display = 'none';
+        function loadPaymentForm(type = 0){
+            if(type == 1){
+                var cursos = document.querySelector("#cursos").childNodes;
+                var lastI = cursos.length-1;
+                for(var i = lastI; i >= 0; i--){
+                    if(cursos[i].childNodes[1]){
+                        cursos[i].childNodes[1].childNodes[1].click();
+                    }
+                }
+            }
+            document.querySelector("#loginform").style.display = 'none';
+            document.querySelector("#signinform").style.display = 'none';
+            if(document.cookie == "logged=true"){
+                var form = document.querySelector("#paymentform");
+                form.style.display = ((form.style.display == 'none') ? 'flex' : 'none');
+            }else{
+                document.querySelector("#loginform").style.display = 'flex';
+            }
+        }
+    </script>
+    <script src="js/forms.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>

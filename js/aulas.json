@@ -1,0 +1,15 @@
+{
+    "CursoMatematica": {
+        "aulas": ["Trigonometria", "Seno, Cosseno e Tangente"],
+        "questoes": {
+            "Trigonometria": [
+                {"questao": "Lorem", "respostas": ["ipsum", "ypsum", "ipsun", "ypsun"], "corretas": [1, 0, 0, 0]},
+                {"questao": "Lorem", "respostas": ["ipsum", "ypsum", "ipsun", "ypsun"], "corretas": [1, 0, 0, 0]}
+            ],
+            "Seno, Cosseno e Tangente": [
+                
+            ]
+        },
+        "videos": ["https://www.youtube.com/embed/dQw4w9WgXcQ", "https://www.youtube.com/embed/dQw4w9WgXcQ"]
+    }
+}
