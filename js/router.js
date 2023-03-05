@@ -128,7 +128,7 @@ function printCursos(){
 }
 
 function goToCurso(curso){
-    var link = url+'/cursoInfo.html?c='+curso;
+    var link = url+'cursoInfo.html?c='+curso;
     var redirector = document.createElement("a");
     redirector.setAttribute("href", link);
     redirector.setAttribute("id", "redirector");

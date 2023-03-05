@@ -22,7 +22,7 @@ function selectAula(aula, curso){
 }
 
 function goToAula(curso){
-    window.location.href = window.location.href.split("cursos.html")[0] + "aula.html?c=" + curso;
+    window.location.href = 'https://devliper.github.io/CapiCursos/aula.html?c=' + curso;
 }
 
 function verify(aula, curso){
