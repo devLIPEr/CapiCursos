@@ -55,23 +55,24 @@ function loadCart(){
             var h2 = document.createElement("h2");
             h2.innerHTML = cursos[element]['name'];
             var h4 = document.createElement("h4");
-            h4.innerHTML = "R$ "+cursos[element]['price'];
+            h4.innerHTML = "R$ "+(parseFloat(cursos[element]['price'].replace(',', '.'))*list['prices'][list['cursos'].indexOf(element)]).toString().replace('.', ',');
             
             var divInputs = document.createElement("div");
             divInputs.setAttribute('class', 'inputs');
             
-            var input = document.createElement("input");
-            input.setAttribute('type', 'number');
-            input.setAttribute('value', '1');
-            input.setAttribute('min', '1');
-            input.setAttribute('onchange', 'calcPrice("'+i+'", "'+element+'")');
-            input.setAttribute('id', 'number'+i);
+            // var input = document.createElement("input");
+            // input.setAttribute('type', 'number');
+            // input.setAttribute('value', '1');
+            // input.setAttribute('min', '1');
+            // input.setAttribute('onchange', 'calcPrice("'+i+'", "'+element+'")');
+            // input.setAttribute('id', 'number'+i);
 
             var button = document.createElement("button");
             button.setAttribute('onclick', 'removeFromPage("'+i+'", "'+element+'")');
             button.innerHTML = 'X';
+            button.setAttribute('id', 'number'+i);
 
-            divInputs.appendChild(input);
+            // divInputs.appendChild(input);
             divInputs.appendChild(button);
 
             div.appendChild(h2);
@@ -93,12 +94,15 @@ function loadCart(){
 function removeFromCart(curso){
     if(readLocalStorage('cart')){
         var list = JSON.parse(readLocalStorage('cart'));
-        list['cursos'].splice(list['cursos'].indexOf(curso), 1);
+        var i = list['cursos'].indexOf(curso);
+        list['cursos'].splice(i, 1);
+        list['prices'].splice(i, 1);
         saveInLocalStorage('cart', JSON.stringify(list));
     }
 }
 
-function addToCart(curso){
+var discounts = [1, 0.472579, 0.472579, 0.479158]
+function addToCart(curso, type = 0){
     if(document.querySelector("#price")){
         document.querySelector("#price").style.cursor = 'not-allowed';
         var funcClick = document.querySelector("#price").attributes.onclick.value;
@@ -112,10 +116,12 @@ function addToCart(curso){
     if(readLocalStorage('cart')){
         var list = JSON.parse(readLocalStorage('cart'));
         list['cursos'].push(curso);
+        list['prices'][list['cursos'].length-1] = discounts[type];
         saveInLocalStorage('cart', JSON.stringify(list));
     }else{
-        var list = {'cursos': []};
+        var list = {'cursos': [], 'prices': []};
         list['cursos'].push(curso);
+        list['prices'][list['cursos'].length-1] = discounts[type];
         saveInLocalStorage('cart', JSON.stringify(list));
     }
 }

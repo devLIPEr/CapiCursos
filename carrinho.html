@@ -152,7 +152,7 @@
 			padding: 3px 10px;
 			outline: 0;
 			border: 0;
-			border-radius: 0 10px 10px 0;
+			border-radius: 10px;
 			font-size: 14px;
 			height: 30px;
             cursor: pointer;
@@ -263,9 +263,10 @@
         function calcPrice(id, curso){
             if(cursos[curso]){
                 value = 0;
-                var qnt = document.querySelector("#number"+id).value;
-                var preco = (qnt * cursos[curso]['price'].replace(',','.'));
-                document.querySelector("input#number"+id).parentElement.parentElement.childNodes[0].childNodes[1].childNodes[1].innerHTML = "R$ " + (preco.toFixed(2)).toString().replace('.',',');
+                // var qnt = document.querySelector("#number"+id).value;
+                var list = JSON.parse(readLocalStorage('cart'));
+                var preco = parseFloat(parseFloat(cursos[curso]['price'].replace(',', '.'))*list['prices'][list['cursos'].indexOf(curso)]);
+                document.querySelector("button#number"+id).parentElement.parentElement.childNodes[0].childNodes[1].childNodes[1].innerHTML = "R$ " + (preco.toFixed(2)).toString().replace('.',',');
                 values[id] = preco;
                 for(const [key, val] of Object.entries(values)){
                     value += val;
@@ -278,7 +279,7 @@
         function removeFromPage(id, curso){
             addToConta(curso);
             removeFromCart(curso);
-            document.querySelector("input#number"+id).parentElement.parentElement.remove();
+            document.querySelector("button#number"+id).parentElement.parentElement.remove();
             delete values[id];
             value = 0;
             for(const [key, val] of Object.entries(values)){

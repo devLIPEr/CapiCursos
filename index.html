@@ -60,14 +60,19 @@
 		.review{
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 15px;
 		}
 
-		.reviews :nth-child(2n) > img{
-			order: 1;
+		/* .reviews :nth-child(2n) > img{
+			order: 2;
+		}
+		.reviews :nth-child(2n) > button{
+			order: -1;
 		}
 		.reviews :nth-child(2n) > div > h2{
 			text-align: end;
-		}
+		} */
 
 		.review img{
 			width: 365px;
@@ -112,6 +117,24 @@
 			border-radius: 10px;
 			width: 60%;
 		}
+		
+        .cart{
+            outline: 0;
+            border: 0;
+            font-size: 16px;
+            font-weight: bolder;
+            background-color: rgba(123,255,81,.9);
+            border-radius: 10px;
+            padding: 3px 5px;
+            cursor: text;
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+        }
+		.cart > img{
+			width: 24px;
+			padding: 0;
+		}
 
 		#profile{
 			display: inline-flex;
@@ -151,25 +174,28 @@
 	<main>
 		<div class="reviews">
 			<div class="review">
-				<img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png" alt="Lorem">
+				<img src="https://i.imgur.com/K8TaLuG.png" alt="Combo de CapiCurso™ de exatas">
 				<div>
-					<h2>Lorem</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a enim tincidunt, vehicula quam vel, mattis augue. Vivamus hendrerit, erat sit amet consequat fermentum, dolor neque fringilla orci, a blandit purus nisi at dui. Aliquam cursus ante nec lorem rhoncus, ac dictum ex faucibus. Phasellus mauris lacus, rutrum eget mi non, porta maximus neque. Phasellus rhoncus magna eros, a condimentum leo iaculis id. Proin eleifend cursus bibendum. Morbi pellentesque lectus enim, at cursus velit sagittis in. Morbi vel finibus tellus. Pellentesque faucibus turpis vehicula nulla semper aliquet.</p>
+					<h2>Combo de CapiCurso™ de exatas</h2>
+					<p>Com esse combo de CapiCurso™ de exatas você leva os CapiCursos™ de Matemática, Física e Química por um preço menor com a mesma qualidade.</p>
 				</div>
+				<button class="cart" onclick="addToCart('CursoMatematica', 1); addToCart('CursoFisica', 1); addToCart('CursoQuimica', 1)"><p>R$ 129,00</p><img src="https://cdn-icons-png.flaticon.com/512/4175/4175270.png" alt="Cart icon"></button>
 			</div>
 			<div class="review">
-				<img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png" alt="Lorem">
+				<img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png" alt="Combo de CapiCurso™ de humanas"><!-- Change src here -->
 				<div>
-					<h2>Lorem</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a enim tincidunt, vehicula quam vel, mattis augue. Vivamus hendrerit, erat sit amet consequat fermentum, dolor neque fringilla orci, a blandit purus nisi at dui. Aliquam cursus ante nec lorem rhoncus, ac dictum ex faucibus. Phasellus mauris lacus, rutrum eget mi non, porta maximus neque. Phasellus rhoncus magna eros, a condimentum leo iaculis id. Proin eleifend cursus bibendum. Morbi pellentesque lectus enim, at cursus velit sagittis in. Morbi vel finibus tellus. Pellentesque faucibus turpis vehicula nulla semper aliquet.</p>
+					<h2>Combo de CapiCurso™ de humanas</h2>
+					<p>Com esse combo de CapiCurso™ de humanas você leva os CapiCursos™ de Biologia, Geografia e Redação por um preço menor com a mesma qualidade.</p>
 				</div>
+				<button class="cart" onclick="addToCart('CursoRedacao', 2); addToCart('CursoBiologia', 2); addToCart('CursoGeografia', 2)"><p>R$ 129,00</p><img src="https://cdn-icons-png.flaticon.com/512/4175/4175270.png" alt="Cart icon"></button>
 			</div>
 			<div class="review">
-				<img src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png" alt="Lorem">
+				<img src="https://i.imgur.com/66U3srK.png" alt="Combo de CapiCurso™ para o Enem">
 				<div>
-					<h2>Lorem</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a enim tincidunt, vehicula quam vel, mattis augue. Vivamus hendrerit, erat sit amet consequat fermentum, dolor neque fringilla orci, a blandit purus nisi at dui. Aliquam cursus ante nec lorem rhoncus, ac dictum ex faucibus. Phasellus mauris lacus, rutrum eget mi non, porta maximus neque. Phasellus rhoncus magna eros, a condimentum leo iaculis id. Proin eleifend cursus bibendum. Morbi pellentesque lectus enim, at cursus velit sagittis in. Morbi vel finibus tellus. Pellentesque faucibus turpis vehicula nulla semper aliquet.</p>
+					<h2>Combo de CapiCurso™ para o Enem</h2>
+					<p>Com esse combo de CapiCurso™ para o Enem você leva os CapiCursos™ de Matemática, Redação e um curso a sua escolha por um preço menor com a mesma qualidade.</p>
 				</div>
+				<button class="cart" onclick="addToCart('CursoRedacao', 3); addToCart('CursoMatematica', 3); addToCart('Choose', 3)"><p>R$ 139,90</p><img src="https://cdn-icons-png.flaticon.com/512/4175/4175270.png" alt="Cart icon"></button>
 			</div>
 		</div>
 	</main>
@@ -189,5 +215,6 @@
 		</div>
 	</div>
 	<script src="js/forms.js"></script>
+	<script src="js/shop.js"></script>
 </body>
 </html>
