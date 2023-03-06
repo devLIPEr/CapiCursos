@@ -97,7 +97,7 @@ var cursos = {
     },
     "Choose": {
         "name": "Curso a escolha (Contate o Suporte)",
-        "img": "",
+        "img": "https://i.imgur.com/PC77Zch.png",
         "price": "90,99",
         "desc": ['Contate o suporte para resgatar seu curso'],
         "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
