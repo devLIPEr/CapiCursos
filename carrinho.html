@@ -24,8 +24,8 @@
         }
 
 		header{
-			background-color: #7BFF51;
-			/* background-image: linear-gradient(#7BFF51 55%, #D8DFD5); */
+			background-color: #ffd036;
+			/* background-image: linear-gradient(#ffd036 55%, #D8DFD5); */
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -51,8 +51,8 @@
 			cursor: pointer;
 		}
 
-        #signinform, #loginform, #paymentform{
-            background-color: rgba(123,255,81,.8);
+        #signinform, #loginform, #paymentform, #suporteform{
+            background-color: rgba(255, 208, 54, .8);
             position: fixed;
             left: 50%;
             top: 50%;
@@ -67,7 +67,7 @@
         #loginform{
             height: 25%;
         }
-        #signinform > input, #loginform > input{
+        #signinform > input, #loginform > input, #suporteform > input{
             padding: 3px 5px;
             outline: 0;
             border: 1px solid black;
@@ -85,16 +85,17 @@
             padding: 3px;
             font-size: 16px;
             color: black;
-            border: 1px #3c9e1e solid;
+            border: 0;
             border-radius: 10px;
             width: 60%;
+            cursor: pointer;
         }
 
         #paymentform{
             flex-direction: row;
             align-items: center;
             justify-content: space-around;
-            background-color: rgba(123,255,81,.5);
+            background-color: rgba(255, 208, 54, .5);
             flex-wrap: wrap;
             height: 25%;
         }
@@ -169,7 +170,7 @@
             height: 10%;
             width: 100%;
             display: flex;
-			background-color: #7BFF51;
+			background-color: #ffd036;
             align-items: center;
             justify-content: center;
         }
@@ -177,7 +178,7 @@
             margin-left: 10px;
         }
         .payment > button{
-            background-color: rgba(123,255,81,.9);
+            background-color: rgba(255, 208, 54, .9);
             outline: 0;
             width: 40%;
             height: 40px;
@@ -201,7 +202,7 @@
         }
 
         @media (max-width: 965px){
-            #signinform, #loginform{
+            #signinform, #loginform, #suporteform{
                 width: 40%;
             }
         }
@@ -211,7 +212,9 @@
 	<header>
 		<a href="/CapiCursos"><img width="128" src="https://i.imgur.com/UihwX2F.png" alt="Logo do CapiCursos"></a>
 		<ul class="header">
-			<li><a>Suporte</a></li>
+			<li><a onclick="removeAll()">Limpar Carrinho</a></li>
+			<li>/</li>
+			<li><a onclick="loadSuporteForm()">Suporte</a></li>
 			<li>/</li>
 			<li><a href="catalogo.html">Catálogo</a></li>
 			<li id="loginn">/</li>
@@ -248,6 +251,13 @@
 			<button onclick="document.cookie = 'logged=true'; loadLogInForm(); showHideLog();">Log In</button>
 		</div>
 	</div>
+	<div id="suporteform">
+		<input type="email" placeholder="Email...">
+		<input type="text" placeholder="Dúvida...">
+		<div class="buttons">
+			<button onclick="loadSuporteForm();">Enviar</button>
+		</div>
+	</div>
 	<div id="paymentform">
 		<img onclick="loadPaymentForm(1)" src="https://logosmarcas.net/wp-content/uploads/2020/05/Visa-Logo.png" alt="VISA">
 		<img onclick="loadPaymentForm(1)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="MasterCard">
@@ -273,6 +283,18 @@
                 }
                 value = Math.round(value*100)/100;
                 document.querySelector("#totalPrice").innerHTML = "R$ " + (value.toFixed(2)).toString().replace('.',',');
+            }
+        }
+
+        function removeAll(){
+            if(readLocalStorage('cart')){
+                var list = JSON.parse(readLocalStorage('cart'));
+                list['cursos'].forEach(element => {
+                    removeFromCart(element);
+                });
+                
+                saveInLocalStorage('cart', JSON.stringify({'cursos': [], 'prices': []}));
+                window.location.href = window.location.href;
             }
         }
 

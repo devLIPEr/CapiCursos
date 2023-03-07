@@ -1,5 +1,6 @@
 document.querySelector("#loginform").style.display = 'none';
 document.querySelector("#signinform").style.display = 'none';
+document.querySelector("#suporteform").style.display = 'none';
 
 function showHideLog(){
     if(document.cookie == ""){
@@ -21,6 +22,7 @@ function loadSignInForm(){
         document.querySelector("#paymentform").style.display = 'none';
     }
     document.querySelector("#loginform").style.display = 'none';
+    document.querySelector("#suporteform").style.display = 'none';
     var form = document.querySelector("#signinform");
     form.style.display = ((form.style.display == 'none') ? 'flex' : 'none');
 }
@@ -30,6 +32,17 @@ function loadLogInForm(){
         document.querySelector("#paymentform").style.display = 'none';
     }
     document.querySelector("#signinform").style.display = 'none';
+    document.querySelector("#suporteform").style.display = 'none';
     var form = document.querySelector("#loginform");
+    form.style.display = ((form.style.display == 'none') ? 'flex' : 'none');
+}
+
+function loadSuporteForm(){
+    if(document.querySelector("#paymentform")){
+        document.querySelector("#paymentform").style.display = 'none';
+    }
+    document.querySelector("#signinform").style.display = 'none';
+    document.querySelector("#loginform").style.display = 'none';
+    var form = document.querySelector("#suporteform");
     form.style.display = ((form.style.display == 'none') ? 'flex' : 'none');
 }

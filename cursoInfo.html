@@ -24,8 +24,8 @@
         }
 
 		header{
-			background-color: #7BFF51;
-			/* background-image: linear-gradient(#7BFF51 55%, #D8DFD5); */
+			background-color: #ffd036;
+			/* background-image: linear-gradient(#ffd036 55%, #D8DFD5); */
 			display: flex;
 			justify-content: space-between;
             align-items: center;
@@ -89,7 +89,7 @@
             border: 0;
             font-size: 16px;
             font-weight: bolder;
-            background-color: rgba(123,255,81,.9);
+            background-color: rgba(255, 208, 54, .9);
             border-radius: 10px;
             padding: 3px 5px;
             cursor: pointer;
@@ -114,8 +114,8 @@
             text-justify: inter-word;
         }
 
-        #signinform, #loginform{
-			background-color: rgba(123,255,81,.8);
+        #signinform, #loginform, #suporteform{
+			background-color: rgba(255, 208, 54, .8);
 			position: fixed;
 			left: 50%;
 			top: 50%;
@@ -130,7 +130,7 @@
 		#loginform{
 			height: 25%;
 		}
-		#signinform > input, #loginform > input{
+		#signinform > input, #loginform > input, #suporteform > input{
 			padding: 3px 5px;
 			outline: 0;
 			border: 1px solid black;
@@ -148,7 +148,7 @@
 			padding: 3px;
 			font-size: 16px;
 			color: black;
-			border: 1px #3c9e1e solid;
+			border: 0;
 			border-radius: 10px;
 			width: 60%;
 		}
@@ -175,7 +175,7 @@
         }
 
         @media (max-width: 965px){
-            #signinform, #loginform{
+            #signinform, #loginform, #suporteform{
                 width: 40%;
             }
         }
@@ -185,7 +185,7 @@
 	<header>
 		<a href="/CapiCursos"><img width="128" src="https://i.imgur.com/UihwX2F.png" alt="Logo do CapiCursos"></a>
         <ul class="header">
-			<li><a>Suporte</a></li>
+			<li><a onclick="loadSuporteForm()">Suporte</a></li>
 			<li>/</li>
             <li><a href="carrinho.html">Carrinho</a></li>
             <li>/</li>
@@ -226,6 +226,13 @@
 		<input type="password" placeholder="Senha...">
 		<div class="buttons">
 			<button onclick="document.cookie = 'logged=true'; loadLogInForm(); showHideLog();">Log In</button>
+		</div>
+	</div>
+	<div id="suporteform">
+		<input type="email" placeholder="Email...">
+		<input type="text" placeholder="Dúvida...">
+		<div class="buttons">
+			<button onclick="loadSuporteForm();">Enviar</button>
 		</div>
 	</div>
 	<script src="js/forms.js"></script>
